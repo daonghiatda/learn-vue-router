@@ -1,4 +1,13 @@
 <template>
+    <div>
+        <label for="">Filter task status</label>
+        <select name="" id="" v-model="filterType">
+            <option value="All">All</option>
+            <option value="Inprogress">Inprogress</option>
+            <option value="Done">Done</option>
+            <option value="Cancel">Cancel</option>
+        </select>
+    </div>
   <table>
     <tr>
       <th>ID</th>
@@ -31,6 +40,11 @@
 
 export default {
   name: "HomeView",
+  data() {
+      return {
+          filterType: 'All'
+      }
+  },
   methods: {
         deleteTask(taskId) {
             this.$store.commit('deleteTask', taskId)
@@ -42,7 +56,7 @@ export default {
     },
   computed: {
     tasks() {
-      return this.$store.state.tasks;
+      return this.$store.state.tasks.filter(task => this.filterType == 'All' ? task : task.status == this.filterType);
     },
   },
 };
