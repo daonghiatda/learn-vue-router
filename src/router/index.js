@@ -5,6 +5,7 @@ import AboutMe from '../views/AboutMe'
 import AboutView from '../views/AboutView'
 import AddTask from '../views/AddTask'
 import UpdateTask from '../views/UpdateTask'
+import ViewTask from '../views/ViewTask'
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
       name: 'update-task',
       component: UpdateTask
   },
+  {
+      path: '/view-task/:taskId',
+      name: 'view-task',
+      component: ViewTask
+  }
 ]
 
 const router = createRouter({

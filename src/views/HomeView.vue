@@ -26,7 +26,7 @@
       <td> {{ task.deadlineAt }} </td>
       <td><span :class="(task.status.toLowerCase())"> {{ task.status }} </span></td>
       <td>
-          <span><i class="fa-solid fa-eye"></i></span>
+          <span><i class="fa-solid fa-eye" @click="viewTask(task.taskId)"></i></span>
           <span><i class="fa-solid fa-file-pen" @click="updateTask(task.taskId)"></i></span>
           <span><i class="fa-solid fa-trash-can" @click="deleteTask(task.taskId)"></i></span>
       </td>
@@ -51,7 +51,10 @@ export default {
             this.$store.commit('decreaseTaskIndex')
         },
         updateTask(taskId) {
-            this.$router.push({ name: 'update-task', params: {taskId: taskId} })
+            this.$router.push({ name: 'update-task', params: {taskId} })
+        },
+        viewTask(taskId) {
+            this.$router.push({ name: 'view-task', params: {taskId}})
         }
     },
   computed: {
